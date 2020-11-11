@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>餐馆放置</title>
+
+<!--script type="text/javascript" src="https://cdn1.kongregate.com/javascripts/kongregate_api.js"></script-->
+<!--script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.6.1.0/prototype.js"></script-->	
+<script>let kongversion = true;</script>
+<script src="jquery.min.js"></script>
+<link rel="stylesheet" href="jquery-ui.css">
+<script src="jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.js"></script>
+<!--script src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js"></script-->
+
+<link rel="stylesheet" href="game.css" type="text/css">
+<script src="game_restaurant_names.js"></script>
+<script src="game_progress.js"></script>
+<script src="game_tutorial.js"></script>
+<script src="game.js"></script>
+<a href="" target="_blank">
+<img src = ./1.png style="float:right;bottom;padding:20px;"></a>
+</head>
+<body oncontextmenu="return false">
+<script src="cnkey.js"></script>
+<script src="transcore.js"></script>
+<div id="loading"><img src="img/loading.gif"><br><div id="incognito_label" style="color: #bb6f6f; position: relative; left: -30px;">本游戏使用本地存储保存进度,<br>所以如果使用<b>无痕模式</b>就无法正常工作.</div><noscript>载入错误.游戏需要启用JavaScript.可以去<a href="https://www.enable-javascript.com/">查看如何在web浏览器中启用JavaScript</a></noscript></div>
+	<div id="main-wrapper" >
+		<div id="main_menu" class="menu" style="visibility:hidden;">
+			<button class="screen_button" id="game_button">游戏</button>
+			<button class="screen_button" id="preferences_button">选项</button>
+			<button class="screen_button" id="info_button" style="display:none;">信息</button>			
+			<button class="screen_button" id="progress_button" style="display:none;">进度</button>
+			<button class="screen_button" id="prestige_button" style="display:none;">重生</button>
+			<button class="screen_button" id="shop_button" style="display:none;">商店</button>
+		</div>
+		<div id="money" style="visibility: hidden;">
+			<div class="current">0</div>
+			<div class="income" style="display:none;">0</div>
+			<div class="coupons" style="display:none;">0</div>
+		</div>
+		<div id="left_part">
+			<div id="description_box"></div>
+			<div id="tutorial_box" style="display:none;">
+				<div class="tutorial">
+					<img id="start_tutorial" class="cook" src="img/other/cook.png">
+				</div>
+			</div>
+			<div id="debug_box" contenteditable="true" style="display:block; display: none;"></div>
+		</div>
+		<div id="center_part">
+			<div class="screen" id="game">
+				<table class="main_table">
+					<tr>
+						<td id="default" style="display: none;">
+							<div class="tr_label restaurantname">餐馆名称</div>
+							<div class="fooditems">
+							
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="dishwashing">
+							<div class="tr_label" style="cursor: pointer;" onClick="DishwashingToggle();">洗盘子 ▲</div>
+							<div class="inner">
+								<div id="dirty">
+									<div id="dirty_stack">
+										<div class="plate dirty pos1" data-type="1"></div>
+										<div class="plate dirty pos2" data-type="2"></div>
+										<div class="plate dirty pos3" data-type="3"></div>
+										<div class="plate dirty pos4" data-type="4"></div>
+										<div class="plate dirty pos5" data-type="5"></div>
+									</div>
+									<button onClick="DishwashingTake()">拿取</button>
+								</div>
+								<div id="sink">
+									<div class="plate" data-type=""></div>
+									<button onClick="DishwashingWash()" disabled>清理</button>
+								</div>
+								<div id="clean">
+									<div id="clean_stack">
+										<div class="plate clean pos1" data-type=""></div>
+										<div class="plate clean pos2" data-type=""></div>
+										<div class="plate clean pos3" data-type=""></div>
+										<div class="plate clean pos4" data-type=""></div>
+										<div class="plate clean pos5" data-type=""></div>
+									</div>
+									<div id="plus_money" style="display:none;">+300&nbsp;<span>💲</span></div>
+									<button onClick="DishwashingNewBatch()" disabled>叠放</button>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="storefront" >
+							<div class="tr_label">餐馆菜单</div>
+							<div class="fooditems">
+								<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
+								<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
+								<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
+								<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
+								<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="kitchen">
+							<div class="tr_label">厨房</div>
+							<div class="fooditems">
+							
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="options">
+							<div class="tr_label">升阶</div>
+							<div class="inner"></div>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="bottom_controls">
+							<div id="cook_buttons">
+								<button class="cook" onClick="CookForMoney(1);">烹饪</button><div id="cook_time"></div>
+								<button class="cook2" onClick="CookForMoney(2);">双倍烹饪</button>
+								<button class="cook3" onClick="CookForMoney(3);">三倍烹饪</button>
+								<button class="cook6" onClick="CookForMoney(6);">六倍烹饪</button>
+								<button class="supercook disabled" onClick="CookForMoney(6, true);" style="display: none;">超级烹饪</button><div id="supercook_time"></div>
+								<button class="new disabled" onClick="TierUpRestaurant();" style="display: none;">新的(5k)</button>
+							</div>
+							<br>
+							<div id="cook_coupon_buttons" style="display: none;">
+								<button class="cookCoupons disabled" onClick="CookForCoupons(1);">烹饪<br>1 <span style="opacity:0.5">🔖</span></button><div id="cook_coupons_time">00:00:00</div>
+								<button class="supercookCoupons disabled" onClick="CookForCoupons(6);">超级烹饪</button><div id="supercook_coupons_time">00:00:00</div>
+								<button class="sortByIncome" onClick="SortByIncome();">排序</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="progressbars">
+							<div class="progressbar_wrapper">
+								<div id="progressbar_prestige">
+									<div id="progressbar_prestige_cover"></div>
+								</div>
+								<div id="progressbar_prestige2">
+									<div id="progressbar_prestige_cover2"></div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="screen" id="info">
+				<div class="infoTabMenu" style="z-index: 2;">
+					<button class="info_tab_button" onclick="ShowInfoTab('dishes');">菜肴</button>
+					<button class="info_tab_button" onclick="ShowInfoTab('restaurant');">餐馆</button>
+					<button class="info_tab_button" onclick="ShowInfoTab('history');">历史</button>					
+				</div>
+				<div class="tab tab_dishes" style="z-index: 2;">
+					<div class="menu" style="z-index: 2;">
+						<button class="info_button" onclick="FilterInfo('all');">所有</button>
+						<button class="info_button" onclick="FilterInfo('active');">激活</button>
+						<button class="info_button" onclick="FilterInfo('肉类');">肉类</button>
+						<button class="info_button" onclick="FilterInfo('素食');">素食</button>
+						<button class="info_button" onclick="FilterInfo('海鲜');">海鲜</button>
+						<button class="info_button" onclick="FilterInfo('快餐');">快餐</button>
+						<button class="info_button" onclick="FilterInfo('甜品');">甜品</button>
+						<button class="info_button" onclick="FilterInfo('廉价');">廉价</button>
+						<button class="info_button" onclick="FilterInfo('高价');">高价</button>
+						<button class="info_button" onclick="FilterInfo('饮料');">饮料</button>					
+						<!--button class="info_button" onclick="FilterInfo('inactive');">Inactive</button-->
+					</div>				
+					<div id="info_dishes">
+
+					</div>
+				</div>
+				<div class="tab tab_restaurant" style="z-index: 2;">
+					<div id="info_restaurant">
+
+					</div>
+				</div>
+				<div class="tab tab_history" style="z-index: 2;">				
+					<div id="info_history">
+
+					</div>
+				</div>
+			</div>
+
+			<div class="screen" id="prestige">
+				<div class="tr_label">重生</div>
+				<div style="margin-top: 20px;">
+					<div style="text-align: center;">
+						当你重生时,你将重新开始游戏并获得重生点数和技能点数.<br>						
+						每点重生点数提高你的总计收益10%.<br>
+						技能点数可以用来购买下面的技能.<br>
+						(鼠标悬停在主屏幕上的技能和彩虹条查看更多的描述.)<br>
+					</div>
+					<div class="before_first_prestige">对于你的第一次重生,最好能获得大约10个重生点数,但是如果你<i>&nbsp;真的&nbsp;</i>想要重新开始,你也可以提早.</div>
+					<div style="text-align:center;">
+						<button id="prestige_restaurant_button">重生</button>
+						<div id="dialog-confirm-prestige" title="重生餐馆?">
+							<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>你将失去你的所有金钱和菜肴并获得&nbsp;<span id="dialog-confirm-prestige-qty">0</span>&nbsp;重生点数.继续吗?</p>
+						</div>
+						<div class="prestige_boosters">
+							<div class="tr_label" style="z-index: 248;">重生助益</div>
+							<input id="prestige_boosters_input" type="number" min="0" max="3" value="0" step="1" style="width: 41px;">
+							<span id="prestige_boosters_total"></span>
+						</div>
+					</div>
+					<div style="text-align: center;">
+						重生你将获得:&nbsp;<span style="font-weight: bold;" class="added_prestige_points"></span>&nbsp;点<br>
+						总计重生点数:&nbsp;<span class="total_prestige_points"></span>&nbsp;⇒&nbsp;<span class="get_prestige_points"></span><br>
+						可用技能点数:&nbsp;<span class="unspent_skill_points"></span>&nbsp;⇒&nbsp;<span class="get_skill_points"></span><br>
+					</div>
+					<hr style="margin: 10px 0">
+					<div style="margin-bottom: 10px;" class="tr_label">技能</div>		
+					<div style="text-align: center;">
+						可用技能点数:&nbsp;<span class="unspent_skill_points" style="font-weight: bold;"></span><br>	
+					</div>	
+					<div id="unlockable_skill_buttons" style="text-align:center; margin-top: 10px; padding-bottom: 40px;">
+						
+					</div>
+					<div id="finished_skill_label">
+						<div style="margin-bottom: 10px;" class="tr_label">已解锁技能</div>					
+					</div>
+					<div id="finished_skill_buttons" style="text-align:center; margin-top: 10px; padding-bottom: 40px;">
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="screen" id="progress">
+				进度
+			</div>
+
+			<div class="screen" id="shop">
+				<div class="tr_label" style=""></div>			
+				<br>
+				<div style="width: 29%; display: inline-block;text-align: center;vertical-align: top;background: #b4b4b434; padding: 1%; margin: 1%;border-radius: 20px;">
+					<div class="tr_label">永久</div>
+					<div class="tr_label">三重选择</div>
+					<button style="width: 50px; background: #fff;"></button><button style="width: 50px; background: #fff;"></button><button style="width: 50px; background: #ffd000;"></button><br>
+					当你获得<br>2个选项进行选择时,你将得到<br>第三个选项.<br>
+					<button id="btnBuyTriple" onClick="BuyTripleChoiceKong();"><img src="img/kred_single.png" style="width:30px; height: 30px;margin-right: 5px;    vertical-align: middle;">50 kreds</button>
+					<div id="boughtTriple"  class="tr_label" style="height: 50px; display:none;">已购买.<br>谢谢你!</div>
+				</div>
+				<div style="width: 29%; display: inline-block;text-align: center;vertical-align: top;background: #b4b4b434; padding: 1%; margin: 1%;border-radius: 20px;">
+					<div class="tr_label">货币</div>					
+					<div class="tr_label">50 💎 宝石</div>
+					<button style="width: 93px; background: #fff; color: #00D3EF">💎💎💎<br>💎💎</button><br>					
+					你可以在游戏中花费宝石购买<br>
+					在右边 →<br>
+					<br>
+					<button onClick="BuyGemsKong();"><img src="img/kred_single.png" style="width:30px; height: 30px;margin-right: 5px;    vertical-align: middle;">50 kreds</button>
+				</div>
+				<div style="width: 29%; display: inline-block;text-align: center;vertical-align: top;background: #b4b4b434; padding: 1%; margin: 1%;border-radius: 20px;">
+					<div id="gems" class="gems">0 <span>💎</span></div>
+					<div id="buy_prestige_booster_div">
+						<div class="tr_label" style="padding-top: 19px;">购买1重生助益</div>
+						<button id="btnBuyPrestigeBoosters" onClick="BuyPrestigeBoosters();">10 💎 宝石</button>
+						<div id="cantBuyPrestigeBoosters" class="tr_label" style="height: 43px; display:none; font-size: 12px;">(用重生助益技能解锁)</div>
+						<br>
+					</div>	
+					<div class="tr_label" style="padding-top: 19px;">购买&nbsp;<span id="coupon_buy_qty">100</span> 🔖 优惠券</div>
+					<button onClick="BuyCoupons();">10 💎 宝石</button>
+				</div>		
+				
+				<div style="color: #bb6f6f; padding-top: 200px; text-align: center;">如果您有问题,请联系开发人员: <b>contact@restaurantidle.com</b></div>
+			</div>
+
+			<div class="screen" id="preferences">
+				<textarea id="import_export_box"></textarea>
+				<input type="checkbox" name="options_dark_mode" id="options_dark_mode" value="Dark">				
+				<label for="options_dark_mode">&nbsp;黑暗模式</label><br>
+				<input type="checkbox" name="options_e_notation" id="options_e_notation" value="e">
+				<label for="options_e_notation">&nbsp;工程指数表示法</label><br>
+				<button id="import_btn">导出<br>到文本 →</button>
+				<br>
+				<button id="export_btn">导入<br>自文本 →</button>&nbsp;(重生游戏)
+				<div id="dialog-confirm-export" class="dialog-hide" title="导出后重生">
+				  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>导出游戏将加载它,然后自动重生,以防止作弊.继续吗?</p>
+				</div>
+				<br>
+				<button id="select_all_btn">选择所有文本</button>
+				<br>
+				<div id="dialog-confirm" class="dialog-hide" title="重置一切(除了内购道具?)">
+				  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>这不是重生系统.如果你不知道它的作用,你最好不要这样做.</p>
+				</div>
+				<button id="hard_reset" style="background:#792d2d;font-size: 12px;">彻底重置(右键点击或长按)</button>
+				<div class="tr_label" style="padding-top: 19px;">社区和联系人:</div><br>
+				<div class="contacts" style="text-align: center; line-height: 26px; width: 45%;">
+					<b>论坛:&nbsp;</b><a target="_blank" href="https://discord.gg/rEgC33c">https://discord.gg/rEgC33c</a><br>
+					<b>红迪网:&nbsp;</b><a target="_blank" href="https://www.reddit.com/r/restaurantidle/">r/restaurantidle/</a><br>
+					<b>邮件:&nbsp;</b> contact@restaurantidle.com<br><br>
+					<b style="color: #bb6f6f;">欢迎来信!</b>
+				</div>
+			</div>
+
+		</div>
+		<div id="right_part">
+			<div id="category_bonuses" style="display:none;"></div>
+			<div id="debug_btns" style="font-size: 10px; display: none;">
+				<div onClick="$('#debug_box').toggle();">调试</div>
+				<div onClick="
+						EverySecond(60*5);
+				">跳过 5 m</div>
+				<div onClick="
+						EverySecond(60*20);
+				">跳过 20 m</div>
+				<div onClick="
+						EverySecond(60*60);
+				">跳过 1 h</div>
+					
+				<div onClick="
+					SaveGame();
+				">保存</div>
+				
+				<div onClick="
+					LoadGame();
+				">载入</div>
+			</div>		
+		</div>
+		
+	</div>
+	
+	
+
+	<div id="win_lower"></div>
+	<div id="win_higher"></div>
+	<div id="return_popup" title=""></div>
+
+
+
+
+<!--客服 开始-->
+<link rel="stylesheet" href="//likexia.gitee.io/game/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//likexia.gitee.io/game/js/kf.js"></script>
+<!-- 客服 结束 -->
+</body></html>
