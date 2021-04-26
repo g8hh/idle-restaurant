@@ -148,7 +148,7 @@ var cnItems = {
     '': '',
     '': '',
     '': '',
-    '': '',
+    'Wash': '洗',
     'Max level bonus reached': '达到最高等级奖励',
     'Current status: active.': '当前状态：有效。',
     'Coupons are used for free cooking.': '优惠券可用于免费烹饪。',
