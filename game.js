@@ -1858,7 +1858,7 @@ if (window.localStorage.getItem('history') === undefined) {
 			optionsHTML += '<select id="new_food_select_1">';
 			for (let foodName in defaultFoodStats) {		
 				if (defaultFoodStats[foodName].class_a != 'buff') {
-					optionsHTML += '<option name="'+foodName+'" value="'+foodName+'" style="background-image:url(/img/food/'+foodName+'.png);line-height: 40px; height: 40px; padding-left: 45px;">'+BeautifyDataType(foodName)+'</options>';
+					optionsHTML += '<option name="'+foodName+'" value="'+foodName+'" style="background-image:url(img/food/'+foodName+'.png);line-height: 40px; height: 40px; padding-left: 45px;">'+BeautifyDataType(foodName)+'</options>';
 				}	
 			}
 			optionsHTML += '</select>';
