@@ -166,7 +166,7 @@ var cnItems = {
     'Amount of money you currently have.': '您目前拥有的金额。',
     'For your first Prestige, it is good to get to about 10 Prestige Points, but if you': '对于您的第一次声望，最好获得大约10个声望点，但是如果您',
     'Exporting the game will load it and then  automatically prestige it to prevent exploits. Continue?': '导出游戏将加载它，然后自动声望它，以防止利用。继续吗?',
-    'Every purchase supports the game and its solo dev.': '每次购买都支持该游戏及其单独开发。',
+    'Every purchase supports the game and its solo dev.': '每次购买都将用于支持该游戏及其单独开发。（本页功能仅限在K站才会有效）',
     'a third option too.': '还有第三种选择。',
     'Kitchen': '厨房',
     ' 1 Prestige Booster': '1声望助推器',
