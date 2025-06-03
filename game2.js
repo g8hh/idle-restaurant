@@ -767,7 +767,7 @@ if ((window.localStorage.getItem('history') === undefined) || (window.localStora
 		}
 		if (true) { //switch if stuff breaks
 			$('body').keydown(function( event ) {
-				if (currentScreen === 'game') {
+				if (currentScreen === 'game') { // hotkeys
 					if ( event.which == 81 ) {//[q]
 						if ((gameState == 'tierup') || (gameState == 'perk')) {
 							$('#new1 button').trigger('click');
@@ -4130,6 +4130,7 @@ if ((window.localStorage.getItem('history') === undefined) || (window.localStora
 				
 			}
 			
+			//console.log(numRolls);
 		}
 		UpdateButtonsOnChange();
 		cooksTotal++;
@@ -4389,6 +4390,15 @@ if ((window.localStorage.getItem('history') === undefined) || (window.localStora
 			} else {
 				$cook6Button.addClass('disabled').html('Sextuple&nbsp;Cook<br>' + AbbreviateNumber( (v.refreshPrice * v.currentCookMode) ) + '$');
 			}		
+			
+			let url = new URL(window.location.href);
+			if ((v.region >= 11) && (url.searchParams.get("cook") == 'mult')) {
+				if (v.money >= v.refreshPrice*60) {
+					$cook6Button.removeClass('disabled').html('60tuple&nbsp;Cook<br>' + AbbreviateNumber( (v.refreshPrice * 60) ) + '$');
+				} else {
+					$cook6Button.addClass('disabled').html('60tuple&nbsp;Cook<br>' + AbbreviateNumber( (v.refreshPrice * 60) ) + '$');
+				}
+			}
 
 			if (v.coupons >= 1) {
 				$cookCouponsButton.removeClass('disabled');
@@ -4889,12 +4899,26 @@ if ((window.localStorage.getItem('history') === undefined) || (window.localStora
 		});
 		
 		$cook6Button.off('mouseover').on('mouseover', function (e) {
+			let url = new URL(window.location.href);
+			
 			let desc = 'Sextuple Cook<br>';
+			if ((v.region >= 11) && (url.searchParams.get("cook") == 'mult')) {
+				desc = '60tuple Cook<br>';
+			}
 			desc += 'Cook 5 random dishes.<br>';
-			desc += 'Minimum quantity: ' + v.skills.minCook*6 + '<br>';
-			desc += 'Maximum quantity: ' + v.skills.maxCook*6 + '<br>';
-			desc += 'Cost: ' + AbbreviateNumber(v.refreshPrice*6) + '$<br>';
-			desc += 'Next cost: ' + AbbreviateNumber(Math.round(6 * v.refreshPrice * (1.1**6))) + '$<br>';
+			
+			if ((v.region >= 11) && (url.searchParams.get("cook") == 'mult')) {
+				desc += 'Minimum quantity: ' + v.skills.minCook*60 + '<br>';
+				desc += 'Maximum quantity: ' + v.skills.maxCook*60 + '<br>';
+				desc += 'Cost: ' + AbbreviateNumber(v.refreshPrice*60) + '$<br>';
+				desc += 'Next cost: ' + AbbreviateNumber(Math.round(60 * v.refreshPrice * (1.1**60))) + '$<br>';
+			} else {
+				desc += 'Minimum quantity: ' + v.skills.minCook*6 + '<br>';
+				desc += 'Maximum quantity: ' + v.skills.maxCook*6 + '<br>';
+				desc += 'Cost: ' + AbbreviateNumber(v.refreshPrice*6) + '$<br>';
+				desc += 'Next cost: ' + AbbreviateNumber(Math.round(6 * v.refreshPrice * (1.1**6))) + '$<br>';
+			}
+			
 			if (!(isMobile())) {
 				desc += '<br>Hotkey: Q<br>';
 			}
@@ -11975,6 +11999,12 @@ if ((window.localStorage.getItem('history') === undefined) || (window.localStora
 		} else {
 			
 		}
+		
+		if ((v.region >= 11) && (url.searchParams.get("cook") == 'mult')) {
+			$('.cook6').attr('onclick', '').off('click').on('click', function (e) {
+				CookForMoney(60);
+			});	
+		}	
 		
 		UpdateIncome();
 		UpdateFoodItems();

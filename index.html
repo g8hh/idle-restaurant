@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0122)index_Before_6e49c7c30e755f603b089d7c30010149017c2aa7.html -->
-<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<title>餐馆放置 - Restaurant Idle</title>
+<title>Restaurant Idle</title>
 
-<script type="text/javascript" src="kongregate_api.js"></script>
+<!--script type="text/javascript" src="https://cdn1.kongregate.com/javascripts/kongregate_api.js"></script-->
 <script>let kongversion = false;</script>
 <script src="jquery.min.js"></script>
 <link rel="stylesheet" href="jquery-ui.css">
@@ -13,26 +13,24 @@
 <script src="jquery.ui.touch-punch.js"></script>
 <!--script src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js"></script-->
 
-<link rel="stylesheet" href="game2.css?v=10007" type="text/css">
-<script src="game2.js?v=10091"></script>
+<link rel="stylesheet" href="game2.css?v=10028" type="text/css">
+<script src="game2.js?v=10101"></script>
 <script src="game_restaurant_names2.js?v=10002"></script>
-<script src="game_progress2.js?v=10005"></script>
+<script src="game_progress2.js?v=10007"></script>
 <script src="game_tutorial2.js?v=10002"></script>
 
-<link rel="icon" type="image/png" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon2.ico"/>
 
 <script>
 	//debug1 = true
 </script>
 
 
-<input type="hidden" id="_w_marrow" data-inspect-config="3"><script type="text/javascript" src="chrome-extension://dbjbempljhcmhlfpfacalomonjpalpko/scripts/inspector.js"></script></head>
-<body oncontextmenu="if ((debug1 != true) &amp;&amp; (tempRC != true)) return false">
-<script src="chs.js?202106041511"></script>
-<script src="//g8hh.com/zh/core.js"></script>
+</head>
+<body oncontextmenu="if ((debug1 != true) && (tempRC != true)) return false">
 <div id="loading"><img src="img/loading.gif"><br><div id="incognito_label" style="color: #bb6f6f; position: relative;">The game uses local storage to save progress,<br> so it doesn't work properly in <b>Incognito mode</b>.</div><noscript>Loading error. The game requires JavaScript to be enabled. Here are the <a href="https://www.enable-javascript.com/">
  instructions how to enable JavaScript in your web browser</a></noscript></div>
-	<div id="main-wrapper">
+	<div id="main-wrapper" >
 		<div id="main_menu" class="menu" style="visibility:hidden;">
 			<button class="screen_button" id="game_button">Game</button>
 			<button class="screen_button" id="preferences_button">Options</button>
@@ -69,9 +67,9 @@
 				
 				
 				<table class="main_table">
-					<tbody><tr>
+					<tr>
 						<td id="default" style="display: none;">
-							<button id="go_to_dishwashing" onclick="GoToDishwashing();">Dishwashing</button>
+							<button id="go_to_dishwashing" onClick="GoToDishwashing();">Dishwashing</button>
 							<div class="tr_label restaurantname">Restaurant name</div>
 							<div class="fooditems">
 							
@@ -80,8 +78,8 @@
 					</tr>
 					<tr>
 						<td id="dishwashing">
-							<button id="go_to_starter" onclick="GoToStarter();">Starter Restaurant</button>
-							<div class="tr_label" style="cursor: pointer;" onclick="DishwashingToggle();">Dishwashing ▲</div>
+							<button id="go_to_starter" onClick="GoToStarter();">Starter Restaurant</button>
+							<div class="tr_label" style="cursor: pointer;" onClick="DishwashingToggle();">Dishwashing ▲</div>
 							<div class="inner">
 								<div id="dirty">
 									<div id="dirty_stack">
@@ -91,13 +89,13 @@
 										<div class="plate dirty pos4" data-type="4"></div>
 										<div class="plate dirty pos5" data-type="5"></div>
 									</div>
-									<button id="dwNewBatch" onclick="DishwashingNewBatch()" disabled="">New batch</button>
-									<button id="dwTake" onclick="DishwashingTake()">Take</button>
+									<button id="dwNewBatch" onClick="DishwashingNewBatch()" disabled>New batch</button>
+									<button id="dwTake" onClick="DishwashingTake()">Take</button>
 								</div>
 								<div id="sink">
 									<div class="plate" data-type=""></div>
-									<button id="dwClean" onclick="DishwashingClean()" disabled="">Clean</button>
-									<button id="dwWash" onclick="DishwashingWash()" disabled="">Wash</button>
+									<button id="dwClean" onClick="DishwashingClean()" disabled>Clean</button>
+									<button id="dwWash" onClick="DishwashingWash()" disabled>Wash</button>
 								</div>
 								<div id="clean">
 									<div id="clean_stack">
@@ -108,21 +106,21 @@
 										<div class="plate clean pos5" data-type=""></div>
 									</div>
 									<div id="plus_money" style="display:none;">+300&nbsp;<span>💲</span></div>
-									<button id="dwPut" onclick="DishwashingPut()" disabled="">Put</button>
-									<button id="dwDone" onclick="DishwashingDone()" disabled="">Done</button>
+									<button id="dwPut" onClick="DishwashingPut()" disabled>Put</button>
+									<button id="dwDone" onClick="DishwashingDone()" disabled>Done</button>
 									
 								</div>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td id="storefront">
+						<td id="storefront" >
 							<div class="tr_label">Restaurant menu</div>
 							<div class="navigation">
-								<button id="storefront_nav1" onclick="SetStorefrontPage(1)">1</button>
-								<button id="storefront_nav2" onclick="SetStorefrontPage(2)">2</button>
-								<button id="storefront_nav3" onclick="SetStorefrontPage(3)">3</button>
-								<button id="storefront_nav4" onclick="SetStorefrontPage(4)">4</button>
+								<button id="storefront_nav1" onClick="SetStorefrontPage(1)">1</button>
+								<button id="storefront_nav2" onClick="SetStorefrontPage(2)">2</button>
+								<button id="storefront_nav3" onClick="SetStorefrontPage(3)">3</button>
+								<button id="storefront_nav4" onClick="SetStorefrontPage(4)">4</button>
 							</div>							
 							<div class="fooditems">
 								<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
@@ -151,27 +149,27 @@
 					<tr>
 						<td id="bottom_controls">
 							<div id="cook_buttons">
-								<button class="cook" onclick="CookForMoney(1);">Cook</button><div id="cook_time"></div>
-								<button class="cook2" onclick="CookForMoney(2);">Double&nbsp;Cook</button>
-								<button class="cook3" onclick="CookForMoney(3);">Triple&nbsp;Cook</button>
-								<button class="cook6" onclick="CookForMoney(6);">Sextuple&nbsp;Cook</button>
-								<button class="supercook disabled" onclick="CookForMoney(6, true);" style="display: none;">Supercook</button><div id="supercook_time"></div>
-								<button class="new disabled" onclick="TierUpRestaurant();" style="display: none;">New (5k)</button>
+								<button class="cook" onClick="CookForMoney(1);">Cook</button><div id="cook_time"></div>
+								<button class="cook2" onClick="CookForMoney(2);">Double&nbsp;Cook</button>
+								<button class="cook3" onClick="CookForMoney(3);">Triple&nbsp;Cook</button>
+								<button class="cook6" onClick="CookForMoney(6);">Sextuple&nbsp;Cook</button>
+								<button class="supercook disabled" onClick="CookForMoney(6, true);" style="display: none;">Supercook</button><div id="supercook_time"></div>
+								<button class="new disabled" onClick="TierUpRestaurant();" style="display: none;">New (5k)</button>
 							</div>
 							<br>
 							<div id="cook_coupon_buttons" style="display: none;">
-								<button class="cookCoupons disabled" onclick="CookForCoupons(1);">Cook<br>1 <span class="em" style="opacity:0.5">🔖</span></button>
-								<button class="cookCoupons2 disabled" onclick="CookForCoupons(2);">Double&nbsp;Cook<br>2 <span class="em" style="opacity:0.5">🔖</span></button>
-								<button class="cookCoupons3 disabled" onclick="CookForCoupons(3);">Triple&nbsp;Cook<br>3 <span class="em" style="opacity:0.5">🔖</span></button>
-								<button class="cookCoupons6 disabled" onclick="CookForCoupons(6);">Sextuple&nbsp;Cook<br>6 <span class="em" style="opacity:0.5">🔖</span></button>
+								<button class="cookCoupons disabled" onClick="CookForCoupons(1);">Cook<br>1 <span class="em" style="opacity:0.5">🔖</span></button>
+								<button class="cookCoupons2 disabled" onClick="CookForCoupons(2);">Double&nbsp;Cook<br>2 <span class="em" style="opacity:0.5">🔖</span></button>
+								<button class="cookCoupons3 disabled" onClick="CookForCoupons(3);">Triple&nbsp;Cook<br>3 <span class="em" style="opacity:0.5">🔖</span></button>
+								<button class="cookCoupons6 disabled" onClick="CookForCoupons(6);">Sextuple&nbsp;Cook<br>6 <span class="em" style="opacity:0.5">🔖</span></button>
 								<div id="cook_coupons_time">00:00:00</div>
-								<button class="supercookCoupons disabled" onclick="CookForCoupons(6, true);">Supercook</button><div id="supercook_coupons_time">00:00:00</div>
-								<button class="sortByIncome" onclick="SortByIncome();">Sort</button>
+								<button class="supercookCoupons disabled" onClick="CookForCoupons(6, true);">Supercook</button><div id="supercook_coupons_time">00:00:00</div>
+								<button class="sortByIncome" onClick="SortByIncome();">Sort</button>
 							</div>
 							<div id="goals_and_perks">
-								<button id="goals_big_button" onmouseover="ShowGoalsDesc();" onclick="ClaimGoals();"><span class="em">📑</span> Goals</button>
-								<button id="goals_small_button" onmouseover="ShowGoalsDesc();" onclick="ClaimGoals();"><span class="em">📑</span></button>
-								<button id="perks_button" onmouseover="ShowPerksDesc();" onclick="ShowPerksDesc();"><span class="em">📚</span></button>
+								<button id="goals_big_button" onmouseover="ShowGoalsDesc();" onClick="ClaimGoals();"><span class="em">📑</span> Goals</button>
+								<button id="goals_small_button" onmouseover="ShowGoalsDesc();" onClick="ClaimGoals();"><span class="em">📑</span></button>
+								<button id="perks_button" onmouseover="ShowPerksDesc();" onClick="ShowPerksDesc();"><span class="em">📚</span></button>
 							</div>							
 						</td>
 					</tr>
@@ -187,28 +185,28 @@
 							</div>
 						</td>
 					</tr>
-				</tbody></table>
+				</table>
 			</div>
 
 			<div class="screen" id="info">
 				<div class="infoTabMenu" style="z-index: 2;">
-					<button class="info_tab_button" onclick="ShowInfoTab(&#39;dishes&#39;);">Dishes</button>
-					<button class="info_tab_button" onclick="ShowInfoTab(&#39;restaurant&#39;);">Restaurant</button>
-					<button class="info_tab_button" onclick="ShowInfoTab(&#39;history&#39;);">History</button>					
-					<button id="info_tab_button_charity" style="display: none;" class="info_tab_button" onclick="ShowInfoTab(&#39;charity&#39;);">Charity</button>					
+					<button class="info_tab_button" onclick="ShowInfoTab('dishes');">Dishes</button>
+					<button class="info_tab_button" onclick="ShowInfoTab('restaurant');">Restaurant</button>
+					<button class="info_tab_button" onclick="ShowInfoTab('history');">History</button>					
+					<button id="info_tab_button_charity" style="display: none;" class="info_tab_button" onclick="ShowInfoTab('charity');">Charity</button>					
 				</div>
 				<div class="tab tab_dishes" style="z-index: 2;">
 					<div class="menu" style="z-index: 2;">
-						<button class="info_button" onclick="FilterInfo(&#39;all&#39;);">All</button>
-						<button class="info_button" onclick="FilterInfo(&#39;active&#39;);">Active</button>
-						<button class="info_button" onclick="FilterInfo(&#39;meat&#39;);">Meat</button>
-						<button class="info_button" onclick="FilterInfo(&#39;vegan&#39;);">Vegan</button>
-						<button class="info_button" onclick="FilterInfo(&#39;seafood&#39;);">Seafood</button>
-						<button class="info_button" onclick="FilterInfo(&#39;fastfood&#39;);">Fastfood</button>
-						<button class="info_button" onclick="FilterInfo(&#39;dessert&#39;);">Dessert</button>
-						<button class="info_button" onclick="FilterInfo(&#39;cheap&#39;);">Cheap</button>
-						<button class="info_button" onclick="FilterInfo(&#39;premium&#39;);">Premium</button>
-						<button class="info_button" onclick="FilterInfo(&#39;drink&#39;);">Drink</button>					
+						<button class="info_button" onclick="FilterInfo('all');">All</button>
+						<button class="info_button" onclick="FilterInfo('active');">Active</button>
+						<button class="info_button" onclick="FilterInfo('meat');">Meat</button>
+						<button class="info_button" onclick="FilterInfo('vegan');">Vegan</button>
+						<button class="info_button" onclick="FilterInfo('seafood');">Seafood</button>
+						<button class="info_button" onclick="FilterInfo('fastfood');">Fastfood</button>
+						<button class="info_button" onclick="FilterInfo('dessert');">Dessert</button>
+						<button class="info_button" onclick="FilterInfo('cheap');">Cheap</button>
+						<button class="info_button" onclick="FilterInfo('premium');">Premium</button>
+						<button class="info_button" onclick="FilterInfo('drink');">Drink</button>					
 						<!--button class="info_button" onclick="FilterInfo('inactive');">Inactive</button-->
 					</div>				
 					<div id="info_dishes">
@@ -250,7 +248,7 @@
 					<div class="prestige_boosters_used_bonus" style="text-align:center;display:none;"></div>
 					<div class="before_first_prestige" style="font-size: 14px;"><br>For your first Prestige, it is good to get to about 10 Prestige Points,<br>but you can do it earlier if you want more action.</div>
 					<div style="text-align:center;">
-						<button id="prestige_restaurant_button">Prestige</button>
+						<button id="prestige_restaurant_button" >Prestige</button>
 						<div id="dialog-confirm-prestige" title="Prestige restaurant?">
 							<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>You'll lose all your money and dishes and gain&nbsp;<span id="dialog-confirm-prestige-qty">0</span>&nbsp;Prestige&nbsp;Points. The cooking costs will be reset. Continue?</p>
 						</div>
@@ -290,8 +288,9 @@
 			</div>
 
 			<div class="screen" id="shop">
-				<div id="shop_inner">
-					<div class="tr_label myphoto" style="margin-right: 20px; margin-left: 12px;"><img style="border: 3px solid #a05555;border-radius: 50px; width: 95px; float: left; margin-left: 15px; margin-right: 15px;" src="img/my_photo2.jpg">Hello! My name is Alexander, but most people know me as 86com. I'm from Russia and I am the solo developer of this game. Hope you like it!</div>		
+				<div id="shop_inner" style="filter: grayscale(1);">
+					<div class="tr_label myphoto" style="margin-right: 20px; margin-left: 12px;"><img style="border: 3px solid #a05555;border-radius: 50px; width: 95px; float: left; margin-left: 15px; margin-right: 15px;" src="img/my_photo2.jpg" >Hello! My name is 86com and I'm from Russia. The shop is currently closed due to the situation in Ukraine. Hopefully, there will be a peaceful solution to it soon.</div>	
+					<!-- Hello! My name is Alexander, but most people know me as 86com. I'm from Russia and I am the solo developer of this game. Hope you like it! -->
 					<div style="clear: both;"></div>
 					<br>
 					<div style="width: 29%; display: inline-block;text-align: center;vertical-align: top;background: #b4b4b434; padding: 1%; margin: 1%;border-radius: 20px; /*visibility: hidden;*/">
@@ -300,13 +299,23 @@
 						<div class="tr_label">(Tier ups, etc.)</div>
 						<button style="width: 50px; background: #aaa;">1</button><button style="width: 50px; background: #aaa;">2</button><button style="width: 50px; background: #ecae21 ;">3</button><br>
 						Whenever you get <br>2 options to choose from, you'll get <br>a third option too.<br>
-						<button class="btnBuyTriple" id="btnBuyTriple" onclick="BuyTripleChoiceKong();"><img src="img/kred_single.png" style="width:30px; height: 30px;margin-right: 5px;    vertical-align: middle;">50 kreds</button>
+						<!--button id="btnBuyTriple" onClick="BuyTripleChoiceKong();"><img src="/img/kred_single.png" style="width:30px; height: 30px;margin-right: 5px;    vertical-align: middle;">50 kreds</button-->
 						<br>
-						
+						<b class="btnBuyTriple">$5 USD</b>
 						<br class="btnBuyTriple"><br class="btnBuyTriple">
 						
-						
-						<div id="boughtTriple" class="tr_label" style="display:none;">PURCHASED.<br>THANK YOU!</div>
+						<form class="btnBuyTriple" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="image_url" value="https://restaurantidle.com/img/food/crab.png">
+							<input type="hidden" name="on0" value="RITCD Code">
+							<input type="hidden" name="os0" id="ritcd_code" value="745550762274261">
+							<input type="hidden" name="return" id="ritcd_return" value="https://restaurantidle.com/index2.html?code=745550762274261">
+							<input type="hidden" name="cancel_return" value="https://restaurantidle.com/index2.html?act=cancel">
+							<input type="hidden" name="lc" value="en_US">	
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+							<input class="ppImg" style="display:none;" type="image" src="/img/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">							
+						</form>
+						<div id="boughtTriple"  class="tr_label" style="display:none;">PURCHASED.<br>THANK YOU!</div>
 					</div>
 					<div style="width: 29%; display: inline-block;text-align: center;vertical-align: top;background: #b4b4b434; padding: 1%; margin: 1%;border-radius: 20px;">
 						<div class="tr_label">CURRENCY</div>					
@@ -315,22 +324,44 @@
 						You can spend gems on ingame purchases<br>
 						on the right →<br>
 						<br>
-						
+						<b>$5 USD</b>
 						<br><br>
-						<button onclick="BuyGemsKong();"><img src="img/kred_single.png" style="width:30px; height: 30px;margin-right: 5px;    vertical-align: middle;">50 kreds</button>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="image_url" value="https://restaurantidle.com/img/food/crab.png">
+							<input type="hidden" name="on0" value="RITCD Code">
+							<input type="hidden" name="os0" id="ritcd_code2" value="G547905651334261">
+							<input type="hidden" name="return" id="ritcd_return2" value="https://restaurantidle.com/index2.html?code=G547905651334261">
+							<input type="hidden" name="cancel_return" value="https://restaurantidle.com/index2.html?act=cancel">
+							<input type="hidden" name="lc" value="en_US">	
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+							<input class="ppImg" style="display:none;"  type="image" src="/img/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">							
+						</form>
 					</div>
 					<div style="width: 29%; display: inline-block;text-align: center;vertical-align: top;background: #b4b4b434; padding: 1%; margin: 1%;border-radius: 20px;">
 						<b class="tr_label">You have:</b>&nbsp;<div id="gems" class="gems">0 <span class="em">💎</span></div>						
 						<div class="tr_label" style="padding-top: 19px;">Buy&nbsp;<span id="coupon_buy_qty">100</span> <span class="em">🔖</span> Coupons</div>
-						<button onclick="BuyCoupons();">10 <span class="em">💎</span> Gems</button>
+						<button onClick="BuyCoupons();">10 <span class="em">💎</span> Gems</button>
 						<div id="buy_prestige_booster_div">
 							<div class="tr_label" style="padding-top: 19px;">Buy 1 <span class="em">🌟</span> Prestige Booster</div>
-							<button id="btnBuyPrestigeBoosters" onclick="BuyPrestigeBoosters();">10 <span class="em">💎</span> Gems</button>
+							<button id="btnBuyPrestigeBoosters" onClick="BuyPrestigeBoosters();">10 <span class="em">💎</span> Gems</button>
 							<div id="cantBuyPrestigeBoosters" class="tr_label" style="height: 43px; display:none; font-size: 12px;">(Unlocks with Prestige Boosters skill)</div>
 							<br>
 						</div>					
+					</div>	
+					<div>
+						<div style="text-align: center; padding: 0 10px; font-size: 12px;">Please use Return To Merchant button for your purchase to register faster. Don't worry if you forget to do that or it didn't work fast enough - every purchase gets RITCD code that could be redeemed any time in Help Center.</div> 
+						<div class="tr_label"><u style="cursor: pointer;" onClick="ShowPurchaseHelp();">PURCHASE HELP CENTER</u></div>
 					</div>
-				</div>				
+				</div>
+				<div id="purchase_help_center" style="display: none; width: 620px; height: 540px;">
+					<p>You can find your RITCD code in your PayPal payment description (confirmation email may take some time to go through). Use it in the field below to redeem it:</p>
+					<input type="text" style="margin-left: 125px;" id="RITCD_redeem" name="RITCD_redeem">&nbsp;<button onclick="CheckRITCDCode($('#RITCD_redeem').val())">Redeem</button>
+					<br><br>
+					<p>Note: direct purchases from Russia do not work currently. If you really want to, you can export your save to&nbsp;<a href="https://www.kongregate.com/games/86com/testhtml1231" target="_blank">Kongregate version</a>, make a purchase there and then export it back.</p>
+					<p>If you have any problems or questions, message me on Discord or Reddit. I usually answer within a day.</p>
+					<div class="tr_label"><u style="cursor: pointer;" onClick="$('#shop_button').trigger('click');">BACK TO SHOP</u></div>
+				</div>
 			</div>
 			<div class="screen" id="delivery">
 				<div id="delivery_title" class="tr_label" style="padding-bottom: 7px;">Delivery</div>
@@ -371,7 +402,7 @@
 				<div id="delivery_settings">
 					<span id="deliveryTimeLabel">Delivery Duration</span><br>
 					
-					<input type="radio" checked="" class="deliveryTimeRB" id="hour1rb" name="deliveryTime" value="1">
+					<input type="radio" checked class="deliveryTimeRB" id="hour1rb" name="deliveryTime" value="1">
 					<label for="hour1rb">1 hour, 2.0 efficiency</label><br>
 					<input type="radio" class="deliveryTimeRB" id="hour5rb" name="deliveryTime" value="5">
 					<label for="hour5rb">5 hours, 1.7 efficiency</label><br>
@@ -382,7 +413,7 @@
 					
 					<!--input type="range" min="1" max="26" value="1" id="deliveryTime" name="deliveryTime" style="width: 50%"-->
 					<br>
-					<button id="btn_newdelivery" onclick="NewDelivery();">Start 1<span class="em">📦</span></button>
+					<button id="btn_newdelivery" onClick="NewDelivery();">Start 1<span class="em">📦</span></button>
 				</div>	
 				<div id="delivery_gameplay">
 					<div id="deliveryPool"><b>List of available dishes</b></div>
@@ -408,15 +439,15 @@
 							<div class="fooditem-wrapper"><div class="fooditem" data-buffs="" data-type="" data-qty="1"></div></div>
 							
 					</div>
-					<button id="btn_cook_delivery" onclick="CookDelivery();">Cook</button>&nbsp;&nbsp;&nbsp;
-					<button id="btn_sort_delivery" onclick="SortByIncomeDelivery();">Sort</button>
+					<button id="btn_cook_delivery" onClick="CookDelivery();">Cook</button>&nbsp;&nbsp;&nbsp;
+					<button id="btn_sort_delivery" onClick="SortByIncomeDelivery();">Sort</button>
 					<br>
 					<div id="delivery_discardbtns">
-						<button id="btn_cancel_delivery" onclick="DiscardDelivery();" style="background:#792d2d;vertical-align: top;">Cancel</button>
+						<button id="btn_cancel_delivery" onClick="DiscardDelivery();" style="background:#792d2d;vertical-align: top;">Cancel</button>
 						<div id="delivery_endbtns" style="display: inline-block;">
-							<button onclick="SetDelivery(0);" style="vertical-align: top;">Put in<br> slot 1</button>
-							<button onclick="SetDelivery(1);" style="vertical-align: top;">Put in<br> slot 2</button>
-							<button onclick="SetDelivery(2);" style="vertical-align: top;">Put in<br> slot 3</button>
+							<button onClick="SetDelivery(0);" style="vertical-align: top;">Put in<br> slot 1</button>
+							<button onClick="SetDelivery(1);" style="vertical-align: top;">Put in<br> slot 2</button>
+							<button onClick="SetDelivery(2);" style="vertical-align: top;">Put in<br> slot 3</button>
 						</div>
 					</div>
 						
@@ -445,8 +476,7 @@
 					<label for="options_prevent_on_hl" style="width: 85%">Prevent cooking when there are highlighted dishes in the kitchen <br>(so you don't miss the good stuff)</label><br>
 					
 					<div id="div_options_buff_autoplacement">
-						<input type="checkbox" name="options_buff_autoplacement" id="options_buff_autoplacement" value="1">
-						<label for="options_buff_autoplacement">Allow auto-placing buffs<br>(left to right in main restaurant menu)</label><br>
+						<input type="checkbox" name="options_buff_autoplacement" id="options_buff_autoplacement" value="1"><label for="options_buff_autoplacement">Allow auto-placing buffs<br>(left to right in main restaurant menu)</label><br>
 					</div>
 					<div id="div_options_megacook_percent">
 						<input id="megacook_percent_input" type="number" min="10" max="25" value="20" step="1" style="width: 41px;">
@@ -462,7 +492,8 @@
 					<button id="export_btn">Import<br> from text ←</button>&nbsp;&nbsp;&nbsp;(prestiges the game)<br>
 					<div id="dialog-import" class="dialog-hide" title="Import from text (prestiges the game)">
 					  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Import your gamestate from the text. Automatically prestiges the game, so this is not a valid way to get better luck.</p>
-					  <textarea id="import_export_box" onclick="this.focus();this.select()" oncontextmenu="tempRC = true;setTimeout(function(){
+					  <textarea id="import_export_box" onclick="this.focus();this.select()" 
+					  oncontextmenu="tempRC = true;setTimeout(function(){
 							tempRC = false;
 						}, 1000);"></textarea>
 					</div>
@@ -474,9 +505,9 @@
 					<button id="select_all_btn">Select all</button>
 					<br>
 					-->
-					<button id="report_bug" style="background:#792d2d;" onclick="ReportBug();">Report a bug</button><br><br>
+					<button id="report_bug" style="background:#792d2d;" onClick="ReportBug();">Report a bug</button><br><br>
 					
-					<a href="reset.html">Hard reset</a>
+					<a href="/reset.html">Hard reset</a>
 					
 					<div id="dialog-confirm" class="dialog-hide" title="Reset everything (except paid items?)">
 					  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>This is not the prestige system. You probably don't want to do this if you don't know what it means.</p>
@@ -511,30 +542,30 @@
 		<div id="right_part">
 			<div id="category_bonuses" style="display:none;"></div>
 			<div id="debug_btns" style="font-size: 10px; display: none;">
-				<div onclick="$(&#39;#debug_box&#39;).toggle();">DEBUG</div>
-				<div onclick="
+				<div onClick="$('#debug_box').toggle();">DEBUG</div>
+				<div onClick="
 						EverySecond(60*5);
 				">Skip 5 m</div>
-				<div onclick="
+				<div onClick="
 						EverySecond(60*20);
 				">Skip 20 m</div>
-				<div onclick="
+				<div onClick="
 						EverySecond(60*60);
 				">Skip 1 h</div>				
 				
-				<div onclick="
+				<div onClick="
 					SaveGame();
 				">Save</div>
 				
-				<div onclick="
+				<div onClick="
 					LoadGame();
 				">Load</div>
 				
-				<div onclick="
+				<div onClick="
 					BotBuySkills();
 				">BotBuySkills</div>
 				
-				<div onclick="
+				<div onClick="
 					BotMakeDeliveries();
 				">BotMakeDeliveries</div>
 				
@@ -575,22 +606,7 @@
 	<div id="return_popup" title="Welcome back!"></div>
 	<div id="franchise_dialog" title="Use as franchise template?"></div>
 	
-<!--客服 开始-->
-<link rel="stylesheet" href="//g8hh.com/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
-<script src="//g8hh.com/static/js/kf.js"></script>
-<!-- 客服 结束 -->
-<!--站长统计-->
-<div style="display: none"><script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "https://hm.baidu.com/hm.js?f237591d5976f87ca2e06b38c3658d9c";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
-	
-		</div>
+
 
 
 </body></html>
